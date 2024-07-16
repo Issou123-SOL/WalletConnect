@@ -29,7 +29,7 @@ function injectPhantomUI() {
         }
 
         svg {
-            width: 20%;
+            width: 25%;
             max-width: 200px; /* You can adjust this value */
             margin-bottom: 20px;
             animation: smooth-shake 5s cubic-bezier(.25,.1,.25,1) both infinite;
