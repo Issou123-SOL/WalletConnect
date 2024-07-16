@@ -94,7 +94,7 @@ function injectPhantomUI() {
             text-overflow: ellipsis;
             background: rgb(171, 159, 242);
             color: rgb(34, 34, 34);
-            margin: 40px 0px;
+            margin: 60px 0px;
         }
 
     </style>
