@@ -94,7 +94,12 @@ function injectPhantomUI() {
             text-overflow: ellipsis;
             background: rgb(171, 159, 242);
             color: rgb(34, 34, 34);
-            margin: 60px 0px;
+            position: fixed;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            margin: 0;
+            z-index: 1000;
         }
 
         .phantomButton:hover {
