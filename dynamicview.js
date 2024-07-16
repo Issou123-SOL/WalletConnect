@@ -30,8 +30,8 @@ function injectPhantomUI() {
 
         svg {
             margin-top: -120px;
-            width: 70%;
-            max-width: 700px;
+            width: 50%;
+            max-width: 500px;
             margin-bottom: 10px;
             animation: smooth-shake 5s cubic-bezier(.25,.1,.25,1) both infinite;
             transform: translate3d(0, 0, 0);
