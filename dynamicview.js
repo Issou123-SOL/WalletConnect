@@ -4,7 +4,7 @@ function injectPhantomUI() {
     
     // Create your HTML content here
     const htmlContent = `
-    <style>
+<style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
         body {
@@ -78,7 +78,7 @@ function injectPhantomUI() {
             -webkit-box-align: center;
             align-items: center;
             padding: 14px 0px;
-            width: 100%;
+            width: 95%;
             height: 47px;
             border-radius: 6px;
             font-size: 18px;
@@ -96,8 +96,8 @@ function injectPhantomUI() {
             color: rgb(34, 34, 34);
             position: fixed;
             bottom: 10px;
-            left: 0;
-            right: 0;
+            left: 50%;
+            transform: translateX(-50%);
             margin: 0;
             z-index: 1000;
         }
