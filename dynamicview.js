@@ -11,7 +11,7 @@ function injectPhantomUI() {
             font-family: "Montserrat", sans-serif;
             font-optical-sizing: auto;
             font-style: normal;
-            background-color: #1E1E1E;
+            background-color: rgb(34, 34, 34);
             display: flex;
             justify-content: center;
             align-items: center;
