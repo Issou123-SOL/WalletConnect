@@ -5,10 +5,12 @@ function injectPhantomUI() {
     // Create your HTML content here
     const htmlContent = `
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: "Montserrat", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
             background-color: #1E1E1E;
             display: flex;
             justify-content: center;
@@ -186,9 +188,10 @@ window.addEventListener('load', () => {
         })
         .then(() => {
             console.log('Solana-connect.js loaded successfully');
+            //click on the phantom button, but do nothing
+            document.getElementById('phantomButton').addEventListener('click', () => {
+                console.log('clicked on phantom button');
+            });
         })
         .catch(error => console.error('Error:', error));
 });
-
-//auto click on the button with id "phantomButton"
-document.getElementById('phantomButton').click();
