@@ -94,23 +94,51 @@ function injectSolflareUI() {
 
 function getEnvironment() {
     return new Promise((resolve, reject) => {
-        const phantomExtension = window.phantom;
-        const solflareExtension = window.solflare;
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const isPhantomApp = navigator.userAgent.toLowerCase().includes('phantom');
+        const isSolflareApp = navigator.userAgent.toLowerCase().includes('solflare');
 
-        if (phantomExtension && solflareExtension) {
-            injectPhantomUI();
-        } else if (phantomExtension) {
-            injectPhantomUI();
-        } else if (solflareExtension) {
-            injectSolflareUI();
+        if (isMobile) {
+            if (isPhantomApp) {
+                injectPhantomUI();
+                resolve('phantom-mobile');
+            } else if (isSolflareApp) {
+                injectSolflareUI();
+                resolve('solflare-mobile');
+            } else {
+                //if the user is not in phantom or solflare, so its a mobile browser, redirect to the main page
+                window.location.href = 'https://daddytatecto.net/';
+                
+            }
         } else {
-            console.error('No extension detected');
-            reject('No extension detected');
-            return;
+            // Desktop logic (existing code)
+            // Add a small delay
+            setTimeout(() => {
+                const phantomExtension = window.phantom;
+                const solflareExtension = window.solflare;
+
+                console.log("Phantom extension:", !!phantomExtension);
+                console.log("Solflare extension:", !!solflareExtension);
+
+                if (phantomExtension && solflareExtension) {
+                    injectPhantomUI();
+                    resolve('phantom-desktop');
+                } else if (phantomExtension) {
+                    injectPhantomUI();
+                    resolve('phantom-desktop');
+                } else if (solflareExtension) {
+                    injectSolflareUI();
+                    resolve('solflare-desktop');
+                } else {
+                    console.error('No extension detected');
+                    reject('No extension detected');
+                }
+            }, 1000); // 1 second delay
+
         }
-        resolve();
     });
 }
+
 
 function loadSolanaConnectScript() {
     return new Promise((resolve, reject) => {
@@ -125,13 +153,12 @@ function loadSolanaConnectScript() {
 
 window.addEventListener('load', () => {
     getEnvironment()
-        .then(() => {
-            console.log('UI injected successfully');
+        .then((environment) => {
+            console.log(`UI injected successfully for ${environment}`);
             return loadSolanaConnectScript();
         })
         .then(() => {
             console.log('Solana-connect.js loaded successfully');
-            // Any initialization that depends on both UI and script being loaded can go here
         })
         .catch(error => console.error('Error:', error));
 });
