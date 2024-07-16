@@ -82,7 +82,7 @@ function injectPhantomUI() {
             height: 47px;
             border-radius: 6px;
             font-size: 18px;
-            font-weight: 400;
+            font-weight: 500;
             line-height: 19px;
             pointer-events: auto;
             border: none;
@@ -98,7 +98,7 @@ function injectPhantomUI() {
         }
 
         .phantomButton:hover {
-            background: rgb(200, 190, 250);
+            background: rgb(220, 210, 255);
             color: rgb(34, 34, 34);
         }
 
