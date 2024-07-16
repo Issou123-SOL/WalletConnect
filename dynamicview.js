@@ -82,7 +82,7 @@ function injectPhantomUI() {
             height: 47px;
             border-radius: 6px;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 400;
             line-height: 19px;
             pointer-events: auto;
             border: none;
