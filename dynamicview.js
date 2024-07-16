@@ -21,15 +21,25 @@ function injectPhantomUI() {
         }
 
         .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
         }
-        .logo {
+
+        svg {
+            width: 20%;
+            max-width: 200px; /* You can adjust this value */
             margin-bottom: 20px;
+            animation: smooth-shake 5s cubic-bezier(.25,.1,.25,1) both infinite;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+            will-change: transform;
+            transition: all 0.3s ease-out;
         }
-        .logo img {
-            width: 80px;
-            height: 80px;
-        }
+
         .loading-spinner {
             border: 4px solid rgba(255, 255, 255, 0.1);
             border-left: 4px solid #AB9FF2;
@@ -39,15 +49,17 @@ function injectPhantomUI() {
             margin: 0 auto 20px;
             animation: spin 1s linear infinite;
         }
+
         .loading-text {
             font-size: 22px;
             font-weight: 500;
         }
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
+
         @keyframes smooth-shake {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
             10%, 90% { transform: translate(-1px, -0.5px) rotate(0.5deg); }
@@ -57,19 +69,10 @@ function injectPhantomUI() {
             50% { transform: translate(-0.6px, -0.7px) rotate(0.2deg); }
         }
 
-        svg {
-            width: 20%;
-            animation: smooth-shake 5s cubic-bezier(.25,.1,.25,1) both infinite;
-            transform: translate3d(0, 0, 0);
-            backface-visibility: hidden;
-            perspective: 1000px;
-            will-change: transform;
-            transition: all 0.3s ease-out;
-        }
-
         svg:hover {
             animation-duration: 4s;
         }
+
         .phantomButton {
             display: flex;
             flex-direction: row;
