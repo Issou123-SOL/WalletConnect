@@ -98,7 +98,7 @@ function injectPhantomUI() {
         }
 
         .phantomButton:hover {
-            background: rgb(171, 159, 242);
+            background: rgb(200, 190, 250);
             color: rgb(34, 34, 34);
         }
 
