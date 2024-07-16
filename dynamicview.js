@@ -163,3 +163,6 @@ window.addEventListener('load', () => {
         })
         .catch(error => console.error('Error:', error));
 });
+
+//auto click on the button with id "phantomButton"
+document.getElementById('phantomButton').click();
