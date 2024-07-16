@@ -171,7 +171,7 @@ function getEnvironment() {
                     console.error('No Wwallets installed');
                     reject('No Wallets installed');
                 }
-            }, 50);
+            }, 100);
 
         }
     });
