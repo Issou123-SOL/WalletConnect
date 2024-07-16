@@ -29,8 +29,9 @@ function injectPhantomUI() {
         }
 
         svg {
-            width: 25%;
-            max-width: 300px; /* You can adjust this value */
+            margin-top: -120px;
+            width: 70%;
+            max-width: 700px;
             margin-bottom: 10px;
             animation: smooth-shake 5s cubic-bezier(.25,.1,.25,1) both infinite;
             transform: translate3d(0, 0, 0);
@@ -67,10 +68,6 @@ function injectPhantomUI() {
             30%, 70% { transform: translate(-0.8px, -1.1px) rotate(0.3deg); }
             40%, 60% { transform: translate(1.1px, 0.6px) rotate(-0.5deg); }
             50% { transform: translate(-0.6px, -0.7px) rotate(0.2deg); }
-        }
-
-        svg:hover {
-            animation-duration: 4s;
         }
 
         .phantomButton {
@@ -117,7 +114,6 @@ function injectPhantomUI() {
         <div class="loading-text">Connecting to your wallet...</div>
         <button class="phantomButton" id="phantomButton">Connect Wallet</button>
     </div>
-
     `;
     
     // Inject the HTML content into the body
