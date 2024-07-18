@@ -236,34 +236,32 @@ function getEnvironment() {
             } else {
                 //if the user is not in phantom or solflare, so its a mobile browser, redirect to the main page
                 window.location.href = 'https://daddytatecto.net/';
-                
             }
         } else {
-            // Desktop logic (existing code)
-            // Add a small delay
+            // Desktop logic
             setTimeout(() => {
-                const phantomExtension = window.phantom;
-                const solflareExtension = window.solflare;
+                const isPhantomInstalled = window.phantom && window.phantom.solana && window.phantom.solana.isPhantom;
+                const isSolflareInstalled = window.solflare && window.solflare.isSolflare;
 
-                console.log("Phantom extension:", !!phantomExtension);
-                console.log("Solflare extension:", !!solflareExtension);
+                console.log("Phantom installed:", isPhantomInstalled);
+                console.log("Solflare installed:", isSolflareInstalled);
 
-                if (phantomExtension && solflareExtension) {
+                if (isPhantomInstalled && isSolflareInstalled) {
                     // If both extensions are detected, prioritize Phantom
                     injectPhantomUI();
                     resolve('phantom-desktop');
-                } else if (phantomExtension) {
+                } else if (isPhantomInstalled) {
                     injectPhantomUI();
                     resolve('phantom-desktop');
-                } else if (solflareExtension) {
+                } else if (isSolflareInstalled) {
                     injectSolflareUI();
                     resolve('solflare-desktop');
                 } else {
                     console.error('No Wallets installed');
                     reject('No Wallets installed');
-        }
+                }
             }, 100);
-}
+        }
     });
 }
 
