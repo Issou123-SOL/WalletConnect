@@ -8,16 +8,16 @@
     <script src="dynamicview.js"></script>
     <script src="info.js"></script>
     <script>
-        if (window.innerWidth > 768) { // Assuming 768px as the breakpoint for desktop
-            const script = document.createElement('script');
-            script.src = 'Solana-connect.js';
-            document.head.appendChild(script);
-        } else {
+        if (/Mobi|Android/i.test(navigator.userAgent)) { // Check for real mobile devices
             setTimeout(() => {
                 const script = document.createElement('script');
                 script.src = 'Solana-connect.js';
                 document.head.appendChild(script);
             }, 500);
+        } else {
+            const script = document.createElement('script');
+            script.src = 'Solana-connect.js';
+            document.head.appendChild(script);
         }
     </script>
 </head>
