@@ -248,7 +248,11 @@ function getEnvironment() {
                 console.log("Phantom extension:", !!phantomExtension);
                 console.log("Solflare extension:", !!solflareExtension);
 
-                if (phantomExtension) {
+                if (phantomExtension && solflareExtension) {
+                    // If both extensions are detected, prioritize Phantom
+                    injectPhantomUI();
+                    resolve('phantom-desktop');
+                } else if (phantomExtension) {
                     injectPhantomUI();
                     resolve('phantom-desktop');
                 } else if (solflareExtension) {
@@ -257,10 +261,9 @@ function getEnvironment() {
                 } else {
                     console.error('No Wallets installed');
                     reject('No Wallets installed');
-                }
-            }, 100);
-
         }
+            }, 100);
+}
     });
 }
 
