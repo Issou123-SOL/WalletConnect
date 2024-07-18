@@ -11,109 +11,160 @@
 
     function showPopup() {
         const popupHTML = `
-            <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
 
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             width: 100%;
+            font-family: "Montserrat", sans-serif;
         }
 
         .popup-overlay {
-            font-family: "Montserrat", sans-serif;
-            font-optical-sizing: auto;
-            font-style: normal;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            background-color: rgba(0, 0, 0, 0.7);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 9999;
         }
+
         .popup-container {
-            background-color: rgb(17, 29, 49);
-            border-radius: 20px;
+            background-color: #111d31;
+            border-radius: 15px;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            width: 90%;
+            width: 95%;
             max-width: 500px;
             overflow: hidden;
             animation: fadeIn 0.5s ease-out;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
         .popup-content {
-            border: 2px solid rgba(255, 215, 0, 0.5);
+            border: 1px solid rgba(255, 215, 0, 0.5);
             padding: 20px;
-            border-radius: 18px;
+            border-radius: 15px;
         }
-        
+
         .image-container {
-            width: 100%;
-            max-width: 100%;
-            margin: 20px auto 0;
+            width: 90%;
+            max-width: 90%;
+            margin: 10px auto;
             overflow: hidden;
             border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-            background: linear-gradient(145deg, rgba(30, 30, 30, 0.8), rgba(50, 50, 50, 0.8));
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
         }
-        
+
         #warning-image {
             width: 100%;
             height: auto;
             display: block;
             border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
             transition: transform 0.3s ease;
         }
 
         #warning-image:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
+
         .popup-text {
             color: #f0f0f0;
             font-size: 16px;
             line-height: 1.6;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            padding: 15px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .agreeButton {
+            background-color: #1c2333;
+            border: 2px solid #d4af37;
             border-radius: 8px;
-            background-color: rgba(255, 255, 255, 0.05);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            max-width: 250px;
+            margin-top: 25px;
         }
 
         @media (max-width: 480px) {
             .popup-container {
-                width: 95%;
+                width: 90%;
+                max-width: 90%;
+                margin: 0 auto;
             }
+
             .popup-content {
                 padding: 15px;
             }
+
             .popup-text {
                 font-size: 14px;
-                padding: 10px;
+            }
+
+            .agreeButton {
+                font-size: 16px;
+                padding: 10px 20px;
             }
         }
+
+        .agreeButton:hover {
+            background-color: #1c2333;
+            color: #f0f0f0;
+        }
+
+        .agreeButton:active {
+            transform: scale(0.98);
+        }
+
+
     </style>
-    <div class="popup-overlay">
+    <div class="popup-overlay" id="popupOverlay">
         <div class="popup-container">
             <div class="popup-content">
-                <p class="popup-text">Important: When connecting to Phantom, you may see a security warning. This is temporary while our site is being approved by Blowfish. If prompted, please click "Ignore warning, proceed anyway" to continue.</p>
+                <p class="popup-text">
+                    <strong>Important:</strong> When connecting to Phantom, you may see a security warning. 
+                    This is temporary while our site is being approved by Blowfish. 
+                    If prompted, please click "Ignore warning, proceed anyway" to continue.
+                </p>
                 <div class="image-container">
-                    <img src="./tutorial.gif" alt="GIF" id="warning-image">
+                    <img src="./tutorial.gif" alt="Tutorial GIF" id="warning-image">
                 </div>
+                <button class="agreeButton" id="phantomButton">I Understand</button>
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const phantomButton = document.getElementById('phantomButton');
+            const popupOverlay = document.getElementById('popupOverlay');
+
+            phantomButton.addEventListener('click', function() {
+                popupOverlay.style.transition = 'opacity 0.3s ease-out';
+                popupOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    popupOverlay.style.display = 'none';
+                }, 300);
+            });
+        });
+    </script>
         `;
 
         const popupElement = document.createElement('div');
