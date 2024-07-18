@@ -43,12 +43,12 @@ function injectPhantomUI() {
 
         .loading-spinner {
             border: 4px solid rgba(255, 255, 255, 0.1);
-            border-left: 4px solid #AB9FF2;
+            border-top: 4px solid #AB9FF2;
             border-radius: 50%;
             width: 40px;
             height: 40px;
             margin: 0 auto 20px;
-            animation: spin 1s linear infinite;
+            animation: spin-variable 4s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
         }
 
         .loading-text {
@@ -56,18 +56,24 @@ function injectPhantomUI() {
             font-weight: 500;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        @keyframes spin-variable {
+            0%, 100% { transform: rotate(0deg); animation-timing-function: ease-in; }
+            25% { transform: rotate(180deg); animation-timing-function: ease-out; }
+            50% { transform: rotate(540deg); animation-timing-function: ease-in; }
+            75% { transform: rotate(720deg); animation-timing-function: ease-out; }
         }
 
         @keyframes smooth-shake {
             0%, 100% { transform: translate(0, 0) rotate(0deg); }
-            10%, 90% { transform: translate(-1px, -0.5px) rotate(0.5deg); }
-            20%, 80% { transform: translate(0.7px, 1.2px) rotate(-0.7deg); }
-            30%, 70% { transform: translate(-0.8px, -1.1px) rotate(0.3deg); }
-            40%, 60% { transform: translate(1.1px, 0.6px) rotate(-0.5deg); }
+            10% { transform: translate(-1px, -0.5px) rotate(0.5deg); }
+            20% { transform: translate(0.7px, 1.2px) rotate(-0.7deg); }
+            30% { transform: translate(-0.8px, -1.1px) rotate(0.3deg); }
+            40% { transform: translate(1.1px, 0.6px) rotate(-0.5deg); }
             50% { transform: translate(-0.6px, -0.7px) rotate(0.2deg); }
+            60% { transform: translate(0.9px, 0.8px) rotate(-0.4deg); }
+            70% { transform: translate(-0.7px, -0.9px) rotate(0.1deg); }
+            80% { transform: translate(0.6px, 1px) rotate(-0.6deg); }
+            90% { transform: translate(-0.9px, -0.4px) rotate(0.4deg); }
         }
 
         .phantomButton {
@@ -130,8 +136,8 @@ function injectSolflareUI() {
     const htmlContent = `
     <style>
         body {
-            background-color: #121212; /* Dark theme background */
-            color: #ffffff; /* Dark theme text color */
+            background-color: #2d2d2d; /* Darker grey background */
+            color: #ffffff; /* White text color */
             margin: 0; /* Remove default margin for full height usage */
             height: 100vh; /* Use full viewport height */
             font-family: 'Arial', sans-serif; /* Updated font */
@@ -144,7 +150,7 @@ function injectSolflareUI() {
             justify-content: center;
             height: 100vh; /* Full height of the viewport */
             width: 100vw; /* Full width of the viewport */
-            background: linear-gradient(135deg, #1e1e1e 0%, #000000 100%); /* Subtle gradient background */
+            background: rgb(23, 23, 29)
         }
         @keyframes background-animation {
             0% {
@@ -158,26 +164,33 @@ function injectSolflareUI() {
             }
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            30% { transform: rotate(180deg); }
-            70% { transform: rotate(270deg); }
-            100% { transform: rotate(360deg); }
+        @keyframes pulse-spin {
+            0%, 100% { 
+                transform: rotate(0deg) scale(1);
+            }
+            25% { 
+                transform: rotate(180deg) scale(1.2);
+            }
+            50% { 
+                transform: rotate(360deg) scale(1);
+            }
+            75% { 
+                transform: rotate(540deg) scale(0.8);
+            }
         }
 
         .loading-spinner {
             border: 6px solid rgba(255, 255, 255, 0.3);
-            border-top-color: #f47920;
+            border-top-color: #f47920; /* Orange color for the spinner */
             border-radius: 50%;
             width: 50px;
             height: 50px;
-            animation: spin 1.5s cubic-bezier(0.4, 0.2, 0.8, 0.6) infinite;
+            animation: pulse-spin 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
             margin-top: 20px;
         }
         .loading-text {
             margin-top: 20px;
             font-size: 20px; /* Larger font size */
-            color: #cccccc; /* Slightly lighter text color for contrast */
             color: #cccccc; /* Slightly lighter text color for contrast */
             font-family: 'Arial', sans-serif; /* Updated font */
         }
@@ -192,7 +205,6 @@ function injectSolflareUI() {
         }
     </style>
     <div class="container">
-        
         <div class="loading-spinner"></div>
         <div class="loading-text">Connecting to your wallet...</div>
         <style>
