@@ -90,8 +90,8 @@
             background-color: #1c2333;
             border: 2px solid #d4af37;
             border-radius: 8px;
-            padding: 15px 30px;
-            font-size: 20px;
+            padding: 20px 40px;
+            font-size: 22px;
             font-weight: 600;
             color: white;
             cursor: pointer;
@@ -99,7 +99,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             width: 100%;
-            max-width: 250px;
+            max-width: 300px;
             margin-top: 25px;
         }
 
