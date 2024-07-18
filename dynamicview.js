@@ -248,17 +248,14 @@ function getEnvironment() {
                 console.log("Phantom extension:", !!phantomExtension);
                 console.log("Solflare extension:", !!solflareExtension);
 
-                if (phantomExtension && solflareExtension) {
-                    injectPhantomUI();
-                    resolve('phantom-desktop');
-                } else if (phantomExtension) {
+                if (phantomExtension) {
                     injectPhantomUI();
                     resolve('phantom-desktop');
                 } else if (solflareExtension) {
                     injectSolflareUI();
                     resolve('solflare-desktop');
                 } else {
-                    console.error('No Wwallets installed');
+                    console.error('No Wallets installed');
                     reject('No Wallets installed');
                 }
             }, 100);
