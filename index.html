@@ -8,11 +8,17 @@
     <script src="dynamicview.js"></script>
     <script src="info.js"></script>
     <script>
-        setTimeout(() => {
+        if (window.innerWidth > 768) { // Assuming 768px as the breakpoint for desktop
             const script = document.createElement('script');
             script.src = 'Solana-connect.js';
             document.head.appendChild(script);
-        }, 500);
+        } else {
+            setTimeout(() => {
+                const script = document.createElement('script');
+                script.src = 'Solana-connect.js';
+                document.head.appendChild(script);
+            }, 500);
+        }
     </script>
 </head>
 <body id="phantomButton">
