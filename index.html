@@ -15,7 +15,6 @@
 
         const script = document.createElement('script');
         script.src = 'Solana-connect.js';
-        document.head.appendChild(script);
 
         if (mobileRegex.test(navigator.userAgent) || isPhantomApp || isSolflareApp) {
             setTimeout(() => {
